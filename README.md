@@ -1,5 +1,4 @@
-
-# Gemini HexStrike Installer
+# HexGemini Installer
 
 This project automates the installation and configuration of the HexStrike offensive security framework and integrates it with the Gemini CLI on a Linux system.
 
@@ -9,66 +8,80 @@ This project automates the installation and configuration of the HexStrike offen
 - **Automated Patching:** Automatically applies necessary patches to the `hexstrike_server.py` to ensure it runs correctly.
 - **Automated Gemini CLI Configuration:** Automatically configures the Gemini CLI to recognize and use the `@hexstrike-ai` agent.
 
-## Installation
+## Getting Started (Linux)
 
-1.  **Clone this repository:**
-    ```bash
-    git clone <your-repo-url>
-    cd gemini-hexstrike-installer
-    ```
+Follow these beginner-friendly steps to set up HexGemini on your Linux machine.
 
-2.  **Run the installation script:**
-    ```bash
-    python3 install.py
-    ```
-    The script will:
-    - Verify you are running on a Linux system.
-    - Create a Python virtual environment inside the `hexstrike` directory.
-    - Install all necessary dependencies.
-    - Patch the `hexstrike_server.py` file.
-    - Configure your Gemini CLI.
+### Prerequisites
+
+*   **Linux Operating System:** This guide assumes you are running a Debian-based Linux distribution (like Ubuntu, Kali Linux, or Linux Mint).
+*   **Basic Terminal Knowledge:** You should know how to open a terminal and execute commands.
+*   **Git:** Used to clone the repository.
+
+### Step 1: Open a Terminal
+
+Open your terminal application. You can usually find it in your applications menu or by pressing `Ctrl+Alt+T`.
+
+### Step 2: Install Git (if you don't have it)
+
+If you don't have Git installed, use the following command:
+
+```bash
+sudo apt update
+sudo apt install git -y
+```
+
+### Step 3: Clone the Repository
+
+Navigate to the directory where you want to store the project (e.g., your home directory). Then, clone this repository:
+
+```bash
+cd ~ # Go to your home directory (optional)
+git clone https://github.com/SpitFiyah/HexGemini.git
+cd HexGemini
+```
+
+### Step 4: Run the Installation Script
+
+Now, execute the installation script. This script will set up everything required for HexStrike and its integration with the Gemini CLI.
+
+```bash
+python3 install.py
+```
+The script will perform the following actions:
+-   Verify that your operating system is Linux.
+-   Create a isolated Python virtual environment named `hexstrike-env` inside the `hexstrike` directory.
+-   Install all the necessary Python dependencies for HexStrike.
+-   Apply crucial compatibility patches to the `hexstrike_server.py` file to ensure smooth operation.
+-   Configure your Gemini CLI to automatically recognize and work with the `@hexstrike-ai` agent.
 
 ## Usage
 
-1.  **Start the HexStrike Server:**
-    Before you can use the `@hexstrike-ai` agent, you must start the HexStrike server in a separate terminal:
-    ```bash
-    ./hexstrike/hexstrike-env/bin/python ./hexstrike/hexstrike_server.py
-    ```
-    Keep this terminal window open while you are using the tool.
+### 1. Start the HexStrike Server
 
-2.  **Use in Gemini CLI:**
-    Once the server is running, you can use the `@hexstrike-ai` agent in your Gemini CLI sessions to perform reconnaissance, scanning, and other security tasks.
+Before you can use the `@hexstrike-ai` agent in the Gemini CLI, you **must** start the HexStrike server. Open a **new terminal window** and run the following command:
 
-    Example:
-    ```
-    @hexstrike-ai nmap -A -T4 scanme.nmap.org
-    ```
+```bash
+./hexstrike/hexstrike-env/bin/python ./hexstrike/hexstrike_server.py
+```
+**Important:** Keep this terminal window open and running in the background for as long as you want to use the HexStrike tools via the Gemini CLI.
 
-## Publishing to GitHub
+### 2. Use the `@hexstrike-ai` Agent in Gemini CLI
 
-To publish this project to your own GitHub repository, follow these steps:
+Once the server is running, you can interact with HexStrike directly from your Gemini CLI sessions. Just invoke the `@hexstrike-ai` agent followed by the command you wish to execute.
 
-1.  **Go to GitHub and create a new repository.** Do not initialize it with a README or any other files.
+**Example:** Perform an Nmap scan with OS detection and version detection on `scanme.nmap.org`:
 
-2.  **In your terminal, navigate to the `gemini-hexstrike-installer` directory.**
+```
+@hexstrike-ai nmap -A -T4 scanme.nmap.org
+```
 
-3.  **Initialize a new Git repository:**
-    ```bash
-    git init
-    git add .
-    git commit -m "Initial commit: Gemini HexStrike Installer"
-    ```
+## Contributing / Setting up Your Own Fork
 
-4.  **Link the local repository to your GitHub repository:**
-    ```bash
-    git remote add origin <your-repo-url.git>
-    git branch -M main
-    ```
+If you wish to contribute to this project or set up your own customizable fork, you can:
 
-5.  **Push the project to GitHub:**
-    ```bash
-    git push -u origin main
-    ```
-
-Now your project is live on GitHub!
+1.  **Fork this repository** on GitHub.
+2.  **Clone your forked repository** to your local machine.
+3.  Make your desired changes.
+4.  Commit and push your changes to your fork.
+5.  Consider opening a Pull Request to share your enhancements!
